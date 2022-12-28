@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "794606647031",
+    "project_id": "nimble-29a65",
+    "storage_bucket": "nimble-29a65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794606647031:android:baa0d8c68f641453ed45f2",
+        "android_client_info": {
+          "package_name": "com.hackathon.nimble"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794606647031-oai29pkechaeeahcn9fe79hhuabue6ic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqNixVZ-p3vy-3lXOK-e7TZHLwk25GjMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794606647031-oai29pkechaeeahcn9fe79hhuabue6ic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
