@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nimble/category.dart';
 import 'package:nimble/home.dart';
 import 'package:nimble/services.dart';
 
@@ -35,7 +36,18 @@ class NavBar extends StatelessWidget {
                   ),
               );
             },
-          )
+          ),
+
+          ListTile(
+            leading: Icon(Icons.production_quantity_limits_outlined),
+            title: Text('Categories'),
+            onTap: () {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Category(),
+                ),
+              );
+            },
+          ),
 
         ],
       ),
