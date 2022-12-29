@@ -113,7 +113,9 @@ class _SignUpState extends State<SignUp> {
                         _register();
                       },
                       child: Text('Sign Up'),
-
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                      ),
                     ),
                   ),
                 ],

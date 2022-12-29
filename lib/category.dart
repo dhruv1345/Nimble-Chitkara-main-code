@@ -30,12 +30,13 @@ class Category extends StatelessWidget {
                     },
                     child: ClipRRect(
                       child: Image.network(
-                          'https://i.pinimg.com/564x/1f/42/e8/1f42e8ba44c0b7a5fcd477e00afe16a9.jpg',
+                          'https://i.pinimg.com/736x/f5/c9/70/f5c970409ef8315c14b1e128b593a903.jpg',
                            fit: BoxFit.cover,
                             ),
                       borderRadius: BorderRadius.circular(25.0),
                      ),
                     ),
+                      width: 350,
                       height: 250,
                   ),
 
@@ -68,7 +69,7 @@ class Category extends StatelessWidget {
                       },
                       child: ClipRRect(
                         child: Image.network(
-                          'https://i.pinimg.com/564x/09/30/e7/0930e7692b8e275b62720bdcc06927b1.jpg',
+                          'https://i.pinimg.com/564x/c4/d3/62/c4d362bf88dc27a340fdb8d227629bbd.jpg',
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.circular(25.0),
@@ -131,6 +132,123 @@ class Category extends StatelessWidget {
                   ),
                 ],
               ),
+
+              Stack(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Details(),
+                          ),
+                        );
+                      },
+                      child: ClipRRect(
+                        child: Image.network(
+                          'https://i.pinimg.com/564x/63/04/73/6304731907ec3ddd7b3a1f9642c735e1.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
+                    height: 250,
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.all(15.0),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Headphones/Headsets',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Stack(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Details(),
+                          ),
+                        );
+                      },
+                      child: ClipRRect(
+                        child: Image.network(
+                          'https://i.pinimg.com/564x/0c/ab/47/0cab475ddc06f3be089b0592a4ec2eb5.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
+                    width: 350,
+                    height: 250,
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.all(15.0),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Kitchen Appliances',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              Stack(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(0.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Details(),
+                          ),
+                        );
+                      },
+                      child: ClipRRect(
+                        child: Image.network(
+                          'https://i.pinimg.com/736x/aa/5a/81/aa5a81192b2b56765ecc6906f2af647b.jpg',
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                    ),
+                    width: 350,
+                    height: 250,
+                  ),
+
+                  Container(
+                    margin: EdgeInsets.all(15.0),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Table Lamps',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
             ],
           ),
         ),

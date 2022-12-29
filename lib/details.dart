@@ -234,7 +234,9 @@ class _DetailsState extends State<Details> {
                   },
                   icon: Icon(Icons.done),
                   label: Text('Submit'),
-
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                  ),
                 ),
               ),
 
