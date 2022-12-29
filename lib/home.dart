@@ -14,22 +14,23 @@ class Home extends StatelessWidget {
         title: Text('Home'),
         backgroundColor: Colors.orange,
       ),
-      body: Container(
-        child: Center(
-          child: Column(
-            children:[
-              SizedBox(height: 300.0),
-              Text('HOME PAGE',
-              style: TextStyle(
-                fontSize: 40.0,
-                color: Colors.grey[500],
-              ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Center(
+            child: Column(
+              children:[
+                SizedBox(height: 20,),
+
+                Container(
+
+               
               ),
 
-            ],
+              ],
+            ),
           ),
-        ),
 
+        ),
       ),
     );
   }

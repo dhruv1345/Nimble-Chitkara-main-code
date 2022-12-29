@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nimble/category.dart';
+import 'package:nimble/history.dart';
 import 'package:nimble/home.dart';
 import 'package:nimble/services.dart';
 
@@ -73,7 +74,7 @@ class NavBar extends StatelessWidget {
             title: Text('History'),
             onTap: () {
               Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Services(),
+                MaterialPageRoute(builder: (context) => History(),
                 ),
               );
             },
