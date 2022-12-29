@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nimble/home.dart';
 import 'package:nimble/signup.dart';
 import 'package:nimble/userlogin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+String finalEmail = "";
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -15,11 +20,43 @@ class _SplashState extends State<Splash> {
   @override
   //function to move to home after splash screen
   void initState(){
+    getValidationData().whenComplete(() async{
+      if(finalEmail != null)
+        {
+          goToHome();
+        }
+
+      else{
+        goToLogIn();
+      }
+    });
     super.initState();
-    goToHome();
+  }
+
+  //checks if the user has previously logged in
+  Future getValidationData() async{
+    //get the instance of sharedPreferences
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    //store the email of share preferences in the obtained email
+    var obtainedEmail = sharedPreferences.getString('email');
+
+    //now set the state
+    setState(() {
+      finalEmail = obtainedEmail!;
+    });
+
+    print(finalEmail);
   }
 
   void goToHome() async {
+    await Future.delayed(Duration(seconds: 5), () {});
+
+    //navigate to home page
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Home()), (route) => false);
+  }
+
+  void goToLogIn() async {
     await Future.delayed(Duration(seconds: 5), () {});
 
     //navigate to home page

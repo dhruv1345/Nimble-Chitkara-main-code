@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nimble/category.dart';
 import 'package:nimble/history.dart';
 import 'package:nimble/home.dart';
 import 'package:nimble/services.dart';
+import 'package:nimble/userlogin.dart';
 
 import 'home.dart';
+//instance to authenticate
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -77,6 +82,16 @@ class NavBar extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => History(),
                 ),
               );
+            },
+          ),
+
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Log Out'),
+            onTap: () {
+            //navigate to home page
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => UserLogIn()), (route) => false);
+
             },
           ),
         ],

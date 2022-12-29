@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:nimble/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //instance to authenticate
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -49,6 +50,7 @@ class _UserLogInState extends State<UserLogIn> {
         _success = -1;
       });
     }
+    
 
   }
   @override
@@ -132,6 +134,12 @@ class _UserLogInState extends State<UserLogIn> {
                   Container(
                     child: ElevatedButton(
                       onPressed: () async {
+                        //instance for sharedpreferences
+                        final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+                        //assign the instance value of user email
+                        sharedPreferences.setString('email', _emailController.text);
+
                         _userlogIn();
                       },
                       child: Text('Login'),
