@@ -1,4 +1,7 @@
+
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,6 +20,31 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  final TextEditingController _productNameController = TextEditingController();
+  final TextEditingController _productPriceController = TextEditingController();
+  final TextEditingController _productPunchlineController = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser;
+  void storeProductDetails() async{
+    
+    //first take the collection ref
+    CollectionReference users = FirebaseFirestore.instance.collection('Users');
+
+    //now from the collection choose the document with id == currentuser.id
+    //then make a new collection for that user named products.
+
+    try{
+    users.doc(user?.uid).collection('Products').doc().set({
+      'product_name':_productNameController.text,
+      'product_price':_productPriceController.text,
+      'product_punchline':_productPunchlineController.text,
+      'product_id':user?.uid,
+    });
+    }
+    catch(error){
+      print(error.toString());
+    }
+  }
+
   //method to get the bottomsheet
   void imagePickerOption(){
     Get.bottomSheet(
@@ -218,6 +246,7 @@ class _DetailsState extends State<Details> {
                 child: Column(
                   children: [
                     TextField(
+                        controller: _productNameController,
                         decoration: InputDecoration(
                         labelText: 'Name of Product',
                         labelStyle: TextStyle(
@@ -240,6 +269,7 @@ class _DetailsState extends State<Details> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _productPriceController,
                       decoration: InputDecoration(
                         labelText: 'Price of Product(Per Unit)',
                         labelStyle: TextStyle(
@@ -261,6 +291,7 @@ class _DetailsState extends State<Details> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _productPunchlineController,
                       decoration: InputDecoration(
                         labelText: 'Punchline of Product',
                         labelStyle: TextStyle(
@@ -344,10 +375,8 @@ class _DetailsState extends State<Details> {
                 alignment: Alignment.center,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Dummy(),
-                      ),
-                    );
+                    storeProductDetails();
+                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Dummy()), (route) => false);
                   },
                   icon: Icon(Icons.done),
                   label: Text('Submit'),

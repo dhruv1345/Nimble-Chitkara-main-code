@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nimble/appbar.dart';
 
 import 'package:nimble/navbar.dart';
+
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,8 +24,13 @@ class Home extends StatelessWidget {
                 SizedBox(height: 20,),
 
                 Container(
-
-               
+                  child: Text(
+                    'home',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.grey,
+                    ),
+                  ),
               ),
 
               ],

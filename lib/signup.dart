@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nimble/home.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 //instance to authenticate
 final FirebaseAuth _auth = FirebaseAuth.instance;
+final user = FirebaseAuth.instance.currentUser!;
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -16,6 +19,7 @@ class _SignUpState extends State<SignUp> {
   //variables to store email and password entered by user
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   //variables to show messages that user has successfully signed up
   late bool _success;
@@ -29,6 +33,15 @@ class _SignUpState extends State<SignUp> {
         await _auth.createUserWithEmailAndPassword(
           email: _emailController.text,
           password: _passwordController.text)).user;
+
+    //from collection user fetcht the document which has id == currentuser.uid
+    FirebaseFirestore.instance.collection("Users").doc(user?.uid).set
+      (
+      {
+        'name':_nameController.text,
+        'emailId': _emailController.text,
+      }
+    );
 
     //if user was created set success true and store its username
     if(user != null){
@@ -75,6 +88,21 @@ class _SignUpState extends State<SignUp> {
               child: Column(
                 children: [
                   TextField(
+                    controller: _nameController,
+                    decoration: InputDecoration(
+                      labelText: 'What should we call you?',
+                      labelStyle: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green)
+                      ),
+                    ),
+                  ),
+
+                  TextField(
                     controller: _emailController,
                     decoration: InputDecoration(
                       labelText: 'Email',
@@ -111,7 +139,7 @@ class _SignUpState extends State<SignUp> {
                     child: ElevatedButton(
                       onPressed: () async{
                         _register();
-                      },
+                        },
                       child: Text('Sign Up'),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.green,
