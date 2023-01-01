@@ -11,6 +11,9 @@ import 'package:nimble/dummy.dart';
 //? signifies that some value will be inserted in future
 File? pickedImage;
 File? pickedImage2;
+String path1 = "";
+String path2 = "";
+
 
 class Details extends StatefulWidget {
   const Details({Key? key}) : super(key: key);
@@ -37,6 +40,8 @@ class _DetailsState extends State<Details> {
       'product_name':_productNameController.text,
       'product_price':_productPriceController.text,
       'product_punchline':_productPunchlineController.text,
+      'product_front_view_path':path1,
+      'product_side_view_path':path2,
       'product_id':user?.uid,
     });
     }
@@ -121,6 +126,7 @@ class _DetailsState extends State<Details> {
       final photo = await ImagePicker().pickImage(source: imageType);
       if (photo == null) return;
       //if photo true, store the path of image
+      path1 = photo.path;
       final tempImage = File(photo.path);
       setState(() {
         //store the path in var
@@ -205,6 +211,8 @@ class _DetailsState extends State<Details> {
       final photo = await ImagePicker().pickImage(source: imageType);
       if (photo == null) return;
       //if photo true, store the path of image
+      path2 = photo.path;
+      print(path2);
       final tempImage = File(photo.path);
       setState(() {
         //store the path in var
