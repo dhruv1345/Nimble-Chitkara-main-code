@@ -12,10 +12,11 @@ from PIL import Image
 import PIL
 import numpy as np
 from pandas import to_numeric
-from tensorflow import keras
-from keras import Sequential
-from keras.layers import Flatten, Conv2D, Dense, MaxPooling2D, BatchNormalization, Dropout
-import tensorflow as tf
+#from tensorflow import keras
+# from keras import Sequential
+# from keras.layers import Flatten, Conv2D, Dense, MaxPooling2D, BatchNormalization, Dropout
+#import tensorflow as tf
+import webcolors
 import cv2
 global ptype
 global percent_customer
@@ -104,7 +105,7 @@ ans = top_colos(img, 1)
 res = (str(ans.index[0]))
 print(res)
 cscore = color_count(res) * 0.1
-print(cscore)
+#print(cscore)
 
 
 # this graph to be shown in the report directly
@@ -208,11 +209,12 @@ def Tscore(m, price):
     dataDict.update({'diff_lead': diff_lead})
     dataDict.update({'segment': segment})
     dataDict.update({'percent_segment': percent_segment})
+    #dataDict.update({'cscore': cscore})
     return tscore
 
 dataDict.update({'cscore':cscore})
-score = Tscore(headtype(typeText), price)
-print("price score: " + str(score))
+# score = Tscore(headtype(typeText), price)
+# print("price score: " + str(score))
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -235,7 +237,10 @@ def upload():
     if (request.method == "POST"):
         imagefile = request.files['image']
         filename = werkzeug.utils.secure_fileaname(imagefile.filename)
-        imagefile.save("./uploadedimage" + filename)
+        imagefile.save("/uploadedimages/" + filename)
+        return jsonify({
+            "message": "Image uploaded successfully"
+        })
         # userInput = request.args['query']
         # userInput = float(userInput)
         # processed = Tscore(predictProduct(img),userInput)
@@ -276,7 +281,7 @@ def fetchtype():
 
 
 if __name__ == "__main__":
-    app.run(port=4000)
+    app.run()
 #
 # nameScore = nscore('Noise')
 
